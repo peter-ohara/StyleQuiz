@@ -1,0 +1,13 @@
+rails g model Quiz title:string
+
+rails g model Question quiz:references question:string
+
+rails g model Choice question:references tags:string label:string image_url:string
+
+rails g model User first_name:string last_name:string
+
+rails g model Answer question:references user:references
+
+rails g migration CreateJoinTableAnswerChoice answer choice
+
+rails g scaffold Product name:string tags:text
