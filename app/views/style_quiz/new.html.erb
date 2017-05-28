@@ -1,0 +1,23 @@
+<h1>StyleQuiz#new</h1>
+<p>Find me in app/views/style_quiz/new.html.erb</p>
+
+
+<%= form_tag style_quiz_create_path, method: 'post' do %>
+    <% @quiz.questions.each_with_index do |question, index| %>
+        <div class="question">
+          <%= "#{index + 1}. #{question.question}" %>
+          <div class="choices">
+            <% question.choices.each do |choice| %>
+              <input type="checkbox"
+                     name="<%= "quiz[#{question.id}[choice_ids]] []" %>"
+                     value="<%= choice.id %>"
+                     id="<%= choice.id %>">
+              <label for="<%= choice.id %>"><%= choice.label %></label>
+              <br>
+            <% end %>
+          </div>
+        </div>
+    <% end %>
+
+    <input type="submit" value="Save Profile">
+<% end %>
